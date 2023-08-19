@@ -456,7 +456,7 @@
   font-size: 23px;
 }
 .blog-fondo{
-  background-image: url('images/blog2.jpg');
+  background-image: url('../images/blog2.jpg');
   background-position: center center;
   background-repeat: no-repeat;
   width: 100%;

@@ -1,10 +1,11 @@
 import { useState, useEffect, useContext} from 'react'
-import { getData } from '../api/getdata'
+
 import { Link, useNavigate } from 'react-router-dom'
 import { CartProvider } from '../context/cartContext'
 import ProductsFilters from './ProductsFilters'
 import Products from './Products'
 import FormSearch from './FormSearch';
+import data from '../api/data'
 
 const ProductsAll = () => {
     const Navigate = useNavigate()
@@ -14,15 +15,15 @@ const ProductsAll = () => {
     const [productsFilters, setProductsFilter] = useState([])
 
     // hace la peticion a la api
-    const getInfo = async()=>{
-      const infoData = await  getData()
-      const total = await infoData.json()
-      setProducts(total.data)
-      return total
+    const getInfo = ()=>{
+
+      setProducts(data)
+  
     }
 
     useEffect(()=>{
       getInfo()
+     
   
     }, [])
 

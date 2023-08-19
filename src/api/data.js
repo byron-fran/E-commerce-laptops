@@ -1,7 +1,6 @@
 
 
-{
-    "data": [
+ const   data = [
         {
             "name": "xiaomi-model-1",
             "price" : 2400,
@@ -216,4 +215,4 @@
             ]
         }
     ]
-}
+export default data
