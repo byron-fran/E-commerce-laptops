@@ -6,7 +6,7 @@ const Footer = () => {
     const { setModal }= useContext(CartProvider);
     return(
         <div onClick={() => setModal(!true)}>
-              <div className="footer">
+            <div className="footer">
             <div className="footer-grid">
                 <div className="footer-titulo">
                     <h2>Categoria</h2>

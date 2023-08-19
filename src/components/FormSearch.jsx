@@ -10,7 +10,7 @@ const FormSearch = ({handleBusqueda,busqueda, setBusqueda}) => {
               <button  className='form_boton' onClick={handleBusqueda} >buscar</button>
             </div>
        </div>
-  </form>
+    </form>
   )
 }
 

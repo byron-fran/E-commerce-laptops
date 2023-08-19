@@ -11,16 +11,14 @@ const ViewProduct = () => {
     const Navigate = useNavigate()
     
     const handleAdd= ()=>{
-    
-  
         Navigate('/products')
-        const existe =cart.find(producto => producto.id === viewProduct.id) //verifica si hay productos duplicados
+        const existeProducto = cart.find( producto => producto.id === viewProduct.id) //verifica si hay productos duplicados
   
-         if(existe){
+         if(existeProducto){
             cart.map(producto =>{
               if( producto.id === viewProduct.id){
                 producto.cantidad ++ // aumenta la cantidad en 1
-                producto.price += viewProduct.price
+                producto.price += viewProduct.price;// aumenta el precio segun la cantidad
                
                 return producto
               }
@@ -55,12 +53,11 @@ const ViewProduct = () => {
          </ul>
        </div>
       </div>
-    <button onClick={handleAdd} className="view_boton" >Agregar al carrito</button>
-  </div>
-  ):<ProductsAll/>}
-        </div>
-       
-</>
+      <button onClick={handleAdd} className="view_boton" >Agregar al carrito</button>
+      </div>
+          ):<ProductsAll/>}
+      </div>
+    </>
   )
 }
 

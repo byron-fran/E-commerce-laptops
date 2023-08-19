@@ -1,7 +1,6 @@
 
-
 const ProductsFilters = ({product,handleAdd, handleView}) => {
-    
+
   return (
     <div className="card"> 
         <img src={`${product.image} `} alt='imagen' className='image_product'/>

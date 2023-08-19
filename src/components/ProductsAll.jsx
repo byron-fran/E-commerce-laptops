@@ -4,7 +4,8 @@ import { Link, useNavigate } from 'react-router-dom'
 import { CartProvider } from '../context/cartContext'
 import ProductsFilters from './ProductsFilters'
 import Products from './Products'
-import FormSearch from './FormSearch'
+import FormSearch from './FormSearch';
+
 const ProductsAll = () => {
     const Navigate = useNavigate()
     const{ setViewProduct, setModal} = useContext(CartProvider)
@@ -14,8 +15,8 @@ const ProductsAll = () => {
 
     // hace la peticion a la api
     const getInfo = async()=>{
-      const real = await  getData()
-      const total = await real.json()
+      const infoData = await  getData()
+      const total = await infoData.json()
       setProducts(total.data)
       return total
     }
@@ -24,8 +25,6 @@ const ProductsAll = () => {
       getInfo()
   
     }, [])
-
-
 
     //Filtrar para hacer una busqueda
     const handleBusqueda =(e)=>{
@@ -45,18 +44,16 @@ const ProductsAll = () => {
       <div onClick={() => setModal(!true)}>
          <FormSearch handleBusqueda={handleBusqueda} busqueda={ busqueda} setBusqueda={setBusqueda}/>
              <div className='contendor'>{ productsFilters.length ? 
-              productsFilters.map(product=>(
+                productsFilters.map(product=>(
                <ProductsFilters key={product.id} product={product} handleView={handleView}/>
-              ))
-            : products.map(product=>(
-             <Products  key={product.id} product={product}  handleView={handleView}/>
+                 ))
+              : products.map(product=>(
+              <Products  key={product.id} product={product}  handleView={handleView}/>
 
-            ))}
-      </div>
+               ))}
+            </div>
       </div>
      
-       
- 
     </>
   )
 }

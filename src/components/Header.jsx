@@ -1,6 +1,6 @@
 const Header = () => {
     return (
-        <div className="fondo">
+      <div className="fondo">
             <div className="fondo-imagen">
                 <div>
                       <h1 className="titulo">Tecno Store</h1>

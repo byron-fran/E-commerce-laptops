@@ -4,7 +4,9 @@ import { useContext, useState } from 'react';
 import { CartProvider } from '../context/cartContext';
 const Navegacion = () => {
   const { cart, setModal } = useContext(CartProvider);
+  
   let cantidadTotal = 0;
+
   if(cart.length> 0){
     for(let i = 0 ; i<cart.length; i ++){
       cantidadTotal += cart[i].cantidad
@@ -21,12 +23,8 @@ const Navegacion = () => {
           onClick={() => setModal(!false)}/>
           {cart.length>0 ? (
             <p className='texto-cantidad-total'>+{cantidadTotal}</p>
-          ): ''}
-          
+           ): ''}
         </div>
-  
-      
-       
     </nav>
   )
 }

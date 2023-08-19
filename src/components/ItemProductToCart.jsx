@@ -1,10 +1,9 @@
 const ItemProductToCart = ({product,deleteForOne, addForOne,deleteAllOfProduct,}) => {
   return (
     <>
-      <tr key={product.id}>
-        <td> <img src={product.image}  alt="imagen-producto"  className='image_cart' />
-         </td>
-         
+      <tr key={product.id}>   
+        <td> <img src={product.image}  alt="imagen-producto"  className='image_cart' /></td>
+    
         <td className="td-texto">{product.name}</td>
         <td className="td-texto">${product.price}</td>
         <td className="td-texto">{product.cantidad}</td>

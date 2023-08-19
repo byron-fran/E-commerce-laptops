@@ -15,11 +15,11 @@ const SideBar = () => {
         }
       
     return (
-        <div className='sidebar' style={{ display : modal ? 'block' : 'none' }}>
+      <div className='sidebar' style={{ display : modal ? 'block' : 'none' }}>
           <p className='boton-close' onClick={() => setModal(!true)} >X</p>
           <div className='siderbar-table'>
             <div >
-            {cart.length>0 ? (
+             {cart.length>0 ? (
               <>
                <table>
                  <thead>
@@ -48,8 +48,8 @@ const SideBar = () => {
                    <img className='carrito-vacio' src="images/carro-vacio.png" alt="image-empty" />
                </div>}
             </div>
-       </div>
         </div>
+      </div>
     )
 };
 

@@ -9,18 +9,15 @@ export const CartProvider = createContext()
 export const CartContext = ({children})=>{
     const [viewProduct, setViewProduct] = useState({})
     const [modal , setModal] = useState(false);
-    const [cart, dispatch] = useReducer(reducer, initialState)
+    const [cart, dispatch] = useReducer(reducer, initialState);
+
     cart.map(product =>{
-        if(product.price ===0 || product.cantidad ===0){
+        if(product.price === 0 || product.cantidad === 0){
             dispatch({type: types.removeInfoProduct, payload: product.id})
         }
     })
 
-
-    
     const addToCart = (product)=>{
-   
-
      dispatch({type :types.addTocart, payload : product })
          
     }

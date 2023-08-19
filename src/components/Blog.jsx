@@ -6,7 +6,6 @@ const Blog = () => {
             <h1 className='blog-h1'>Blog</h1>
             <div className='blog-fondo'>
                 <div className='blog-flex'>
-                    <div></div>
                     <div className='blog-contenido'>
                         <p className='blog-texto'>
                             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reprehenderit et temporibus 
@@ -22,6 +21,7 @@ const Blog = () => {
                     </div>
                 </div>
             </div>
+            {/*Fin de este div*/}
             <div className='iconos'>
                 <div className='blog-iconos'>
                     <div className='blog-box'>
@@ -36,9 +36,9 @@ const Blog = () => {
                         <h2>Ahorro</h2>
                         <img src="images/icono-3.png" alt="imagen-logo" />
                     </div>
-                </div> 
-                    <h2 className='envio-texto' >Envio gratis</h2>
-                    <div className='envio'>
+                    </div> 
+                        <h2 className='envio-texto' >Envio gratis</h2>
+                        <div className='envio'>
                         <img className='envio-carrito' src="images/icono-1.png" alt="imagen-logo" />
                     </div>
             </div>
