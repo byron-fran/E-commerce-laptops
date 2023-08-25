@@ -1,4 +1,7 @@
-const ItemProductToCart = ({product,deleteForOne, addForOne,deleteAllOfProduct,}) => {
+import { useEffect } from "react"
+
+const ItemProductToCart = ({product,deleteForOne, addForOne,deleteAllOfProduct}) => {
+
   return (
     <>
       <tr key={product.id}>   

@@ -10,10 +10,12 @@ export const CartContext = ({children})=>{
     const [viewProduct, setViewProduct] = useState({})
     const [modal , setModal] = useState(false);
     const [cart, dispatch] = useReducer(reducer, initialState);
-
+    const [habilitar, setHablitar] = useState(false);
+    const[spinner, setSpinner] = useState(false)
     cart.map(product =>{
         if(product.price === 0 || product.cantidad === 0){
             dispatch({type: types.removeInfoProduct, payload: product.id})
+          
         }
     })
 
@@ -24,20 +26,36 @@ export const CartContext = ({children})=>{
 
     const deleteAllOfProduct =(product=>{
         dispatch({type : types.deleteAllOfProduct, payload : product})
+       
     })
 
     const deleteForOne = (product)=>{
    
         dispatch({type : types.deleteForOne, payload : product})
+        
 
     }
     const addForOne = (product)=>{
         dispatch({type : types.addForOne, payload :product})
+       
     }
 
 
     return(
-        <CartProvider.Provider value={{cart, addToCart,deleteAllOfProduct,deleteForOne,addForOne,viewProduct, setViewProduct,modal , setModal}}>
+        <CartProvider.Provider value={{cart, 
+                                       addToCart,
+                                       deleteAllOfProduct,
+                                       deleteForOne,
+                                       addForOne,
+                                       viewProduct,
+                                       setViewProduct,
+                                       modal , 
+                                       setModal,
+                                       habilitar, 
+                                       setHablitar,
+                                       spinner, 
+                                       setSpinner
+        }}>
                 {children}
         </CartProvider.Provider>
     )

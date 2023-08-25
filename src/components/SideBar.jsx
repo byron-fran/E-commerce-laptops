@@ -7,13 +7,30 @@ import ItemProductToCart from './ItemProductToCart'
 
 const SideBar = () => {
     const {cart, deleteAllOfProduct,deleteForOne,addForOne,modal , setModal} = useContext(CartProvider);
+    const [listCart, setListCart] = useState([])
     let precioTotal = 0;
+    
+    let precio = 0;
 
-    //Calcular el precio total de todos los pedidos
-      for(let i = 0 ; i<cart.length; i ++){
-          precioTotal += cart[i].price
-        }
+    for(let i = 0 ; i<cart.length; i ++){
+      precioTotal += cart[i].price;
       
+    }
+
+      if(cart.length){
+        cart.map (producto => {
+          return {
+            ...producto,
+          price : producto.price * producto.cantidad
+          }
+        })
+      }
+
+    //setListCart(productosCantidad)
+    //Calcular el precio total de todos los pedidos
+
+
+
     return (
       <div className='sidebar' style={{ display : modal ? 'block' : 'none' }}>
           <p className='boton-close' onClick={() => setModal(!true)} >X</p>
@@ -35,7 +52,7 @@ const SideBar = () => {
                  </thead>
                  <tbody>
                    {cart.map(product=>(
-                     <ItemProductToCart key={product.id} product={product} addForOne={addForOne} deleteForOne={deleteForOne} deleteAllOfProduct={deleteAllOfProduct}/>
+                     <ItemProductToCart precio={precio} key={product.id} product={product} addForOne={addForOne} deleteForOne={deleteForOne} deleteAllOfProduct={deleteAllOfProduct}/>
                    ))}
                  </tbody>
                </table>

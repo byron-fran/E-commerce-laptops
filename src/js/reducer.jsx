@@ -12,8 +12,8 @@ export const reducer = (state, action)=>{
         case types.deleteForOne: {
             const productExist = state.find( product => product.id === action.payload.id);
           
-            if (productExist && productExist.cantidad >= 1) {
-              return state.map((product) => {
+            if (productExist.price > 0 && productExist.cantidad > 0) {
+              return state.map( product => {
                 if (product.id === action.payload.id) {
                    const precioTotal =  product.price
                    const cantidadTotal = product.cantidad

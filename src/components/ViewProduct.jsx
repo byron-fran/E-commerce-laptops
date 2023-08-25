@@ -1,36 +1,43 @@
 import { useContext, useEffect, useState } from "react"
 import { CartProvider } from "../context/cartContext"
 import { useNavigate } from "react-router-dom"
-import ProductsAll from "./ProductsAll"
+import ProductsAll from "./ProductsAll";
+import Spinner from "./Spinner";
 
 const ViewProduct = () => {
 
-    const {cart, addToCart,viewProduct, setModal} = useContext(CartProvider)
+    const {cart, addToCart,viewProduct, setModal,spinner, setSpinner} = useContext(CartProvider)
     const {specs} = viewProduct;
     const [productView, setProductView] =useState({})
-    const Navigate = useNavigate()
     
+    
+    const habilitarBoton = cart.find( producto => producto.id === viewProduct.id)
     const handleAdd= ()=>{
-        Navigate('/products')
-        const existeProducto = cart.find( producto => producto.id === viewProduct.id) //verifica si hay productos duplicados
+   
+       setSpinner(true);
+       setTimeout(() => {
+         setSpinner(false);
+         const existeProducto = cart.find( producto => producto.id === viewProduct.id) //verifica si hay productos duplicados
   
-         if(existeProducto){
-            cart.map(producto =>{
+           if(existeProducto){
+              cart.map(producto =>{
               if( producto.id === viewProduct.id){
                 producto.cantidad ++ // aumenta la cantidad en 1
-                producto.price += viewProduct.price;// aumenta el precio segun la cantidad
-               
                 return producto
-              }
+                 }
+              //Fin del if   
               else{
-                return producto
-              }
+                  return producto
+                }
             })
-         }
-        else{
-            addToCart(viewProduct)
-        }
-      }
+           }
+          //Fin del if 
+          else{
+              addToCart(viewProduct)
+          }
+       },2000)
+
+    }
 
   return (
     <>
@@ -53,7 +60,11 @@ const ViewProduct = () => {
          </ul>
        </div>
       </div>
-      <button onClick={handleAdd} className="view_boton" >Agregar al carrito</button>
+        <button disabled={habilitarBoton? true : false} 
+         onClick={handleAdd} 
+         className={habilitarBoton ? 'view_boton_opacity': "view_boton"} 
+         >{habilitarBoton &&  !spinner ?'Agregado' : spinner ? <Spinner/> : 'Argegar Al carrito' }
+        </button>
       </div>
           ):<ProductsAll/>}
       </div>
